@@ -3,6 +3,11 @@ sources:
   - name: thelook
     database: bigquery-public-data
     schema: thelook_ecommerce
+    config:
+      freshness:
+        warn_after: {count: 1, period: day}
+        error_after: {count: 2, period: day}
+      loaded_at_field: created_at
     tables:
       - name: orders
         description: "The orders table contains all the orders placed by customers on The Look e-commerce site. Each row represents a single order, with details about the customer."
@@ -12,8 +17,16 @@ sources:
               - not_null:
                   config:
                     severity: warn
+          - name: order_id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+              - unique:
+                  config:
+                    severity: error
       - name: users
-        description: "The users table contains information about the customers who have placed orders on The Look e-commerce site." 
+        description: "The users table contains information about the customers who have placed orders on The Look e-commerce site."
         columns:
           - name: id
             tests:
@@ -25,12 +38,17 @@ sources:
                     severity: error
       - name: products
         description: "The products table contains information about the products available for purchase on the e-commerce site."
+        config:
+          freshness: null
         columns:
           - name: id
             tests:
               - not_null:
                   config:
                     severity: warn
+              - unique:
+                  config:
+                    severity: error
       - name: order_items
         description: "The order_items table contains information about the individual items that were included in each order."
         columns:
@@ -54,3 +72,6 @@ sources:
               - not_null:
                   config:
                     severity: warn
+              - unique:
+                  config:
+                    severity: error 

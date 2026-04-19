@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: "Staging model for users table from The Look e-commerce dataset."
+    config:
+      materialized: view
+      tags: ['staging', 'users']
+    columns:
+      - name: user_id
+        description: "Unique identifier for each user."
+        tests:
+          - not_null:
+              config:
+                severity: warn
+          - unique:
+              config:
+                severity: error

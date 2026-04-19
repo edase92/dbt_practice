@@ -20,6 +20,9 @@ sources:
               - not_null:
                   config:
                     severity: warn
+              - unique:
+                  config:
+                    severity: error
       - name: products
         description: "The products table contains information about the products available for purchase on the e-commerce site."
         columns:

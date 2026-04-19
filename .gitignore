@@ -1,0 +1,19 @@
+# dbt artifacts
+target/
+dbt_packages/
+dbt_internal_packages/
+logs/
+
+# secrets — never commit credentials
+.env
+profiles.yml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

@@ -1,0 +1,53 @@
+version: 2
+sources:
+  - name: thelook
+    database: bigquery-public-data
+    schema: thelook_ecommerce
+    tables:
+      - name: orders
+        description: "The orders table contains all the orders placed by customers on The Look e-commerce site. Each row represents a single order, with details about the customer."
+        columns:
+          - name: user_id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+      - name: users
+        description: "The users table contains information about the customers who have placed orders on The Look e-commerce site." 
+        columns:
+          - name: id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+      - name: products
+        description: "The products table contains information about the products available for purchase on the e-commerce site."
+        columns:
+          - name: id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+      - name: order_items
+        description: "The order_items table contains information about the individual items that were included in each order."
+        columns:
+          - name: order_id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+          - name: product_id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+          - name: user_id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+          - name: id
+            tests:
+              - not_null:
+                  config:
+                    severity: warn

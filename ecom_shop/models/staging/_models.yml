@@ -41,6 +41,14 @@ models:
               arguments:
                 to: ref('stg_users')
                 field: user_id
+      - name: num_of_item 
+        description: "Number of items included in the order."
+        tests:
+          - negative_values:
+              arguments:
+                column_name: num_of_item
+              config:
+                severity: warn
   - name: stg_order_items
     description: "Staging model for order items table from The Look e-commerce dataset."
     config:

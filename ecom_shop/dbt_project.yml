@@ -6,6 +6,7 @@ seed-paths: ["seeds"]
 model-paths: ["models"]
 macro-paths: ["macros"]
 test-paths: ["tests"]
+analysis-paths: ["analysis"] 
 clean-targets:
   - "target"
   - "dbt_packages"
@@ -23,3 +24,11 @@ models:
     marts:
       +materialized: table
       +schema: marts
+
+seeds:
+  ecom_shop:
+    +schema: seeds
+  margins:
+    +column_types:
+      margin: STRING 
+      channel: STRING 

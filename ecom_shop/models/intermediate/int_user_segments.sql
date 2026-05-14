@@ -12,7 +12,8 @@ from
     stg_users 
 )
 select 
-    *
+    *, 
+    cast(created_at as date) as created_date
 from 
     segments
 left join 

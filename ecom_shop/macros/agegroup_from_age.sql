@@ -1,4 +1,4 @@
-{% macro agegroup_from_age(age_column)%}
+{% macro agegroup_from_age(age_column) %}
     case 
         when {{ age_column }} < 18 then 'Under 18' 
         when {{ age_column }} between 18 and 24 then '18-24' 

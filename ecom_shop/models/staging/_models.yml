@@ -16,6 +16,15 @@ models:
           - unique:
               config:
                 severity: error 
+      - name: age 
+        description: "User age in years."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 0
+                max_value: 120
+              config:
+                severity: warn 
   - name: stg_orders
     description: "Staging model for orders table from The Look e-commerce dataset."
     config:
